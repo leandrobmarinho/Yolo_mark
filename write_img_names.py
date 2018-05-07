@@ -8,15 +8,21 @@ parser.add_argument("-v", "--verbose", action="store_true",
 
 args = parser.parse_args()
 
-file = open("train.txt","w") 
+if args.path:
+	files = glob.glob(os.path.join(args.path, '*.jpg'))
+	if files:
 
-for filename in glob.glob(os.path.join(args.path, '*.jpg')):
-	filename = "data/img/{}".format(os.path.basename(filename))
-	if args.verbose:
-	    print("writing '{}'".format(filename))
+		file = open("train.txt","w") 
 
-	file.write("{}\n".format(filename))
+		for filename in files:
+			filename = "data/img/{}".format(os.path.basename(filename))
+			if args.verbose:
+			    print("writing '{}'".format(filename))
 
-file.close()
-print("done")
+			file.write("{}\n".format(filename))
 
+		file.close()
+		print("done")
+
+	else:
+		print("No images")
