@@ -27,3 +27,4 @@ linux_mark.sh
 x64/Release/data/img/bird4.txt
 x64/Release/data/train.txt
 *.data
+*.names
